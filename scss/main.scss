@@ -1,0 +1,25 @@
+@import "materialize/sass/materialize.scss";
+@import "variables";
+
+.header {
+  background-color: $primary-color;
+  text-align: center;
+}
+
+.main {
+  background-color: $primary-light;
+}
+
+.card-content {
+  #{&}__header {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.card-manager {
+  .card-content__header {
+    // background-color: #ffc107;
+    @extend .amber, .darken-1;
+  }
+}
