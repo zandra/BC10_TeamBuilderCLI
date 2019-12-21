@@ -7,7 +7,7 @@ test('Can set department account via constructor', () => {
 });
 
 test('getRole() should return "Product Manager"', () => {
-  const role = 'PM';
+  const role = 'Product Manager';
   const pm = new ProductManager(2, 'Prod Man', 'test@test.com', 'IOS/Android');
   expect(pm.getRole()).toBe(role);
 });

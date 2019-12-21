@@ -1,0 +1,47 @@
+[{
+    "id": "1",
+    "managerName": "Mary Manager",
+    "managerEmail": "teamlead@email.com",
+    "managerRoom": "46"
+  },
+  {
+    "id": "2",
+    "name": "Paul PM",
+    "email": "pm@email.com",
+    "role": "Product Manager",
+    "pmDepartment": "IOS/Android",
+    "addEmployee": true
+  },
+  {
+    "id": "3",
+    "name": "Engineer Bob",
+    "email": "bob@bobsemail.com",
+    "role": "Engineer",
+    "engineerGithub": "bobbob",
+    "addEmployee": true
+  },
+  {
+    "id": "4",
+    "name": "Engineer Betty",
+    "email": "betty@icloud.com",
+    "role": "Engineer",
+    "engineerGithub": "bettycodes",
+    "addEmployee": true
+  },
+  {
+    "id": "5",
+    "name": "Intern Ike",
+    "email": "ike@school.edu",
+    "role": "Intern",
+    "internSchool": "USC",
+    "addEmployee": true
+  },
+  {
+    "id": "6",
+    "name": "Intern Ing",
+    "email": "emaime@school.edu",
+    "role": "Intern",
+    "internSchool": "NYU ",
+    "addEmployee": false
+  }
+]

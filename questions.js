@@ -1,8 +1,5 @@
 /* eslint-disable */
 const inquirer = require('inquirer');
-const Manager = require('./lib/Manager');
-const Engineer = require('./lib/Engineer');
-const Intern = require('./lib/Intern');
 
 const team = [];
 
@@ -40,6 +37,12 @@ const employeeQuestions = [
     name: 'role',
     message: 'What is their role?',
     choices: ['Product Manager', 'Engineer', 'Intern'],
+  },
+  {
+    type: 'input',
+    name: 'pmDepartment',
+    message: "What is the PM's department?",
+    when: answers => answers.role === "Product Manager",
   },
   {
     type: 'input',

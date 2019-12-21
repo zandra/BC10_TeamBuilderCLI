@@ -1,25 +1,48 @@
-@import "materialize/sass/materialize.scss";
+@import "materialize/sass/__materialize.scss";
 @import "variables";
 
 .header {
   background-color: $primary-color;
   text-align: center;
+  height: 100px;
 }
 
 .main {
   background-color: $primary-light;
-}
-
-.card-content {
-  #{&}__header {
-    height: 100%;
-    width: 100%;
+  .card-container {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    .card {
+      margin: 10px;
+      .card-content__header {
+        text-align: center;
+        width: 100%;
+      }
+      .card-content__main {
+        padding: 10px;
+      }
+    }
   }
 }
 
 .card-manager {
   .card-content__header {
-    // background-color: #ffc107;
-    @extend .amber, .darken-1;
+    background-color: map-get($card-colors, "manager");
+  }
+}
+.card-pm {
+  .card-content__header {
+    background-color: map-get($card-colors, "pm");
+  }
+}
+.card-engineer {
+  .card-content__header {
+    background-color: map-get($card-colors, "engineer");
+  }
+}
+.card-intern {
+  .card-content__header {
+    background-color: map-get($card-colors, "intern");
   }
 }
