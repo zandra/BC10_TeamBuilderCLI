@@ -1,88 +1,102 @@
 /* eslint-disable */
-const inquirer = require('inquirer');
+function firstName(str) {
+  const [first, last] = str.split(' ');
+  return first;
+}
 
-const team = [];
-
+const confirmReady = [
+  {
+    type: 'confirm',
+    name: 'ready',
+    message:
+      'Press Enter when you are ready to begin...',
+    default: true,
+  }
+];
 const managerQuestions = [
-    {
-      type: 'input',
-      name: 'managerName',
-      message: "Please enter the Team Manager's full name",
-    },
-    {
-      type: 'input',
-      name: 'managerEmail',
-      message: "What is the manager's email address?",
-    },
-    {
-      type: 'input',
-      name: 'managerRoom',
-      message: "What is the manager's office number?",
-    },
+  {
+    type: 'input',
+    name: 'name',
+    message: "Please enter the Team Manager's full name: ",
+  },
+  {
+    type: 'input',
+    name: 'email',
+    message: function(answers) {
+    let fName = firstName(answers.name);
+    return `What is ${fName}'s email address? `;
+    }
+  },
+  {
+    type: 'input',
+    name: 'managerRoom',
+    message: function(answers) {
+      let fName = firstName(answers.name);
+      return `What is the ${fName}'s office number?`
+    }
+  },
 ];
 
 const employeeQuestions = [
   {
     type: 'input',
     name: 'name',
-    message: "Please enter the next team member's full name",
+    message: "Enter the next team member's full name: ",
   },
   {
     type: 'input',
     name: 'email',
-    message: 'What is the their email address?',
+    message: function(answers) {
+      let fName = firstName(answers.name);
+      return `What is ${fName}'s email address? `;
+    }
   },
   {
     type: 'list',
     name: 'role',
-    message: 'What is their role?',
+    message: function(answers) {
+      let fName = firstName(answers.name);
+      return `What is ${fName}'s role?`
+    },
     choices: ['Product Manager', 'Engineer', 'Intern'],
   },
   {
     type: 'input',
     name: 'pmDepartment',
-    message: "What is the PM's department?",
-    when: answers => answers.role === "Product Manager",
+    message: function(answers) {
+      let fName = firstName(answers.name);
+      return `What is the ${fName}'s department?`
+    },
+    when: answers => answers.role === 'Product Manager',
   },
   {
     type: 'input',
     name: 'engineerGithub',
-    message: "What is the engineer's Github username?",
-    when: answers => answers.role === "Engineer",
+
+    message: function(answers) {
+      let fName = firstName(answers.name);
+      return `What is the ${fName}'s Github username?`
+  },
+    when: answers => answers.role === 'Engineer',
   },
   {
     type: 'input',
     name: 'internSchool',
-    message: "What is the intern's school?",
-    when:  answers =>  answers.role === "Intern",
+    message: function(answers) {
+      let fName = firstName(answers.name);
+      return `What is ${fName}'s school? (If intern does not have a home university, please enter "Sponsored".)`
+  },
+    when: answers => answers.role === 'Intern',
   },
   {
     type: 'confirm',
     name: 'addEmployee',
-    message: "Would you like to add another team member? Hit enter or type Y for YES. Type N if you have finished building your team.",
-    default: true
+    message:
+      'Would you like to add another team member? (Type N if you have finished building your team.)',
+    default: true,
   },
 ];
 
-
-function createEmployee() {
-  inquirer.prompt(employeeQuestions).then( answers => {
-    team.push(answers);
-    if (answers.addEmployee) {
-      createEmployee();
-    } else {
-      console.log(team);
-    }
-  });
-}
-
-function buildTeam() {
-  inquirer.prompt(managerQuestions).then(answers => {
-    team.push(answers);
-    return createEmployee();
-  });
-}
-
-buildTeam();
-
-module.exports = team;
+module.exports.confirmReady = confirmReady;
+module.exports.employeeQuestions = employeeQuestions;
+module.exports.managerQuestions = managerQuestions;
