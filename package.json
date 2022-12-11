@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "del": "^5.1.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "inquirer": "^7.0.1",
     "jest": "^24.9.0"
   }
